@@ -1,0 +1,39 @@
+[
+    {
+        "_id": "5f98ce0ac19a193960236552h",
+        "name": "iphone",
+        "categoryName": "phones",
+        "price": 1000,
+        "date": "2020-10-28T01:48:58.104Z"
+    },
+    {
+        "_id": "5f98ce0ac19a193960236552h",
+        "name": "acer",
+        "categoryName": "laptops",
+        "price": 1000,
+        "date": "2020-10-28T01:48:58.104Z"
+    },
+    {
+        "_id": "5f98ce0ac19a193960236552h",
+        "name": "lg tv",
+        "categoryName": "tv gagdets",
+        "price": 1000,
+        "date": "2020-10-28T01:48:58.104Z"
+    },
+    {
+        "_id": "5f98ce0ac19a193960236552h",
+        "name": "samsung Bt speaker",
+        "categoryName": "headsets",
+        "price": 12000,
+        "date": "2020-10-28T01:48:58.104Z"
+    },
+    {
+        "_id": "5f98ce0ac19a193960236552h",
+        "name": "gucci bag",
+        "categoryName": "bags",
+        "price": 2500,
+        "date": "2020-10-28T01:48:58.104Z"
+    }
+    
+
+]
