@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Ecommerce platform");
 });
 
-app.listen(port, () => {
+app.listen(port || 3000, () => {
   console.log(`Server Running on: ${port}`);
 });
 
