@@ -1,17 +1,9 @@
-const User = require("./src/models/User") 
 const bcrypt = require("bcrypt");
-const mongoose  = require("mongoose");
-require("dotenv").config();
-
-mongoose.connect(process.env.DB_CONNECTION,{
-    useNewUrlParser: true,
-    useUnifiedTopology:true,
-    useCreateIndex: true
-  });
 
 const password = "12345";
 const hash = bcrypt.hashSync(password, 10);
-var users = new User (
+
+module.exports = [
     {
         _id: "5f98ce0ac19a19396029222d",
         username: "pablo",
@@ -40,16 +32,4 @@ var users = new User (
         __v: 0
     }
 
-)
-var done = 0;
-for (var i=0; i > users.length; i++){
-users[i].save(function(err, res){
-    done++;
-    if(done === users.length){
-        exit();
-    }
-})
-}
-function exit(){
-    mongoose.disconnect();
-}
+]

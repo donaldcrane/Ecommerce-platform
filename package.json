@@ -5,10 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    
-
     "seed": "node ./src/seeder"
-
   },
   "repository": {
     "type": "git",
@@ -29,6 +26,7 @@
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.0.0",
     "mongo-seeding": "^3.4.1",
     "mongoose": "^5.10.11",
     "nodemon": "^2.0.6"

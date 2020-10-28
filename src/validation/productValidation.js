@@ -16,4 +16,4 @@ const productValidation = data =>{
 };
 
 
-module.exports.regiserValidation = productValidation;
+module.exports.productValidation = productValidation;

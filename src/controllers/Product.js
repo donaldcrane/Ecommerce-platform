@@ -1,5 +1,5 @@
 const Product = require("../models/Product");
-const { productValidation} = require("../validation/userValidation");
+const { productValidation } = require("../validation/productValidation");
 
 
 class productController {
@@ -38,8 +38,8 @@ class productController {
     static async deleteProduct(req, res) {
         const { name } = req.params;
         try{
-            const product = await Product.remove({name: name});
-            return res.status(200).json({ status: 200, message: `successfully Deleted ${name}` });
+            const product = await Product.deleteOne({name: name});
+            return res.status(200).json({ status: 200, message: `successfully Deleted ${name} from database` });
         } catch (err)  {
         return res.status(404).send({status: 404,error: `'${name}' does not exists in the database`,});
     }}
@@ -51,7 +51,7 @@ class productController {
             const product = await Product.findByIdAndUpdate({_id: id}, 
                 {$set: {name: req.body.name, categoryName: req.body.categoryName, price: req.body.price}
                 });
-            return res.status(200).json({ status: 200, message: `successfully Updated ${name}`, product});
+            return res.status(200).json({ status: 200, message: `successfully Updated ${product.name}`, product});
             
         } catch (err)  {
         return res.status(404).send({ status: 404, error: "sorry Product does not exist in the database" });

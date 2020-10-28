@@ -73,8 +73,7 @@ class userController{
     static async deleteUser(req, res) {
         const { name } = req.query;
         try{
-            console.log(name);
-            const deleteduser = await Product.remove({username: name});
+            const deleteduser = await User.deleteOne({username: name});
             return res.status(200).json({ status: 200, message: `successfully Deleted ${deleteduser.name}` });
         } catch (err)  {
         return res.status(404).send({status: 404,error: `'${name}' does not exists in the database`,});

@@ -1,4 +1,5 @@
 const { Seeder } = require('mongo-seeding');
+require("dotenv").config();
 const config = {
     database: process.env.DB_CONNECTION,
     dropDatabase: true,
@@ -10,13 +11,18 @@ const collections = seeder.readCollectionsFromPath(path.resolve("./src/data"));
 require("dotenv").config();
 
 
-seeder
-  .import(collections)
-  .then(() => {
-    // Do whatever you want after successful import
-    console.log("success");
-  })
-  .catch(err => {
-    // Handle errors
-    res.send(err);
-  });
+// seeder
+//   .import(collections)
+//   .then(() => {
+//     // Do whatever you want after successful import
+//     console.log("success");
+//   })
+//   .catch(err => {
+//     // Handle errors
+//     res.send(err);
+//   });
+try {
+  seeder.import(collections);
+} catch (err) {
+ console.log(error)
+}

@@ -10,4 +10,4 @@ const categoryValidation = data =>{
 };
 
 
-module.exports.regiserValidation = categoryValidation;
+module.exports.categoryValidation = categoryValidation;

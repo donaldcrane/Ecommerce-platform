@@ -1,4 +1,6 @@
+const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+
 require("dotenv").config();
 
 
@@ -12,14 +14,10 @@ module.exports = class Auth {
       const token = authorization.split(" ")[1];
       decoded = jwt.verify(token, process.env.TOKEN_SECRET);
       req.decoded = decoded;
-      const { _id } = req.decoded.user;
-      const user = await User.findOne({where: {_id, role:true} });
-      if (user) {
-        return next();
-      } return res.status(400).send("SORRY USER IS NOT AN ADMIN");
-        }
-    }catch{
-      res.status(400).send("INVALID TOKEN");
+      return next();
     }
-  }
+    return res.status(401).json({ status: 401, error: "Please login." });
+  } catch (error) {
+    return res.status(500).json({ status: 500, error: "Server Error." });
+  }}
 }
