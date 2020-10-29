@@ -80,12 +80,13 @@ class userController{
     }}
 
     static async updateUser(req, res) {
-        const { id } = req.query;
+        const { name } = req.query;
         try{
-            const updateduser = await User.findByIdAndUpdate({_id: id}, 
-                {$set: {username: req.body.name}
+            const updateduser = await User.updateOne(
+                {name}, 
+                {$set: {username: req.body.username}
                 });
-            return res.status(200).json({ status: 200, message: `successfully Updated ${updateduser.name} details`, updateduser});
+            return res.status(200).json({ status: 200, message: "successfully Updated user details"});
             
         } catch (err)  {
         return res.status(404).send({status: 404,error: "User does not exists in the database",});

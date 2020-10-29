@@ -1,19 +1,29 @@
 const Joi = require("joi");
 
-const productValidation = data =>{
-    const schema ={
-        name: Joi.string()
-            .min(5)
-            .required,
-        categoryName: Joi.string()
-            .min(5)
-            .required,
-        price: Joi.number()
-            .min(5)
-            .required
-    };
-    return Joi.validate(data, schema);
-};
-
+const productValidation = data => {
+    const schema = Joi.object({
+      name: Joi.string().required().min(5)
+        .max(100)
+        .empty()
+        .messages({
+          "any.required": "Sorry, product name is required",
+          "string.empty": "Sorry, product Name cannot be an empty field",
+        }),
+      categoryName: Joi.string().required().min(5).max(1024)
+        .max(100)
+        .empty()
+        .messages({
+          "any.required": "Sorry, product name is required",
+          "string.empty": "Sorry, product name cannot be an empty field",
+          "string.min": "Product name should have a minimum length of 5"
+        }),
+        price: Joi.number().required()
+        .messages({
+          "string.empty": "Sorry, price cannot be an empty field",
+          
+        }),
+    });
+    return schema.validate(data);
+  };
 
 module.exports.productValidation = productValidation;
