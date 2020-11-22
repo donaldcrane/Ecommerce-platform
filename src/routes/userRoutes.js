@@ -1,10 +1,12 @@
-const { Router } = require("express");
-const categoryController = require ("../controllers/Categories");
-const userController = require ("../controllers/User");
-const productController = require ("../controllers/Product");
+import { Router } from "express";
+import categoryController from "../controllers/Categories";
+import userController from "../controllers/User";
+import productController from "../controllers/Product";
 
 const { getCategories, getCategory } = categoryController;
-const { createUser, loginUser, getUser, getUsers } = userController;
+const {
+  createUser, loginUser, getUser, getUsers
+} = userController;
 const { getProduct, getProducts } = productController;
 
 const router = Router();
@@ -17,4 +19,4 @@ router.post("/signin", loginUser);
 router.get("/get-products", getProducts);
 router.get("/get-product", getProduct);
 
-module.exports =  router;
+export default router;

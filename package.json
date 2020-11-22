@@ -4,8 +4,14 @@
   "description": "A Basic set of APIs that simulates an “E Commerce Platform”,",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "seed": "node ./src/seeder"
+    "clean": "npm rm -rf build && npm run build-babel",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "start-dev": "cross-env NODE_ENV=developement nodemon --exec babel-node app.js",
+    "lint": "eslint src/  --fix",
+    "seed": "node ./src/seeder",
+    "test": "cross-env NODE_ENV=test  && npm run seed && nyc --require --reporter=html --reporter=text mocha -r @babel/register ./src/tests/index.js --timeout 50000 --recursive --exit || true "
   },
   "repository": {
     "type": "git",
@@ -18,7 +24,6 @@
   },
   "homepage": "https://github.com/donaldcrane/Ecommerce-platform#readme",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.12.1",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -32,7 +37,22 @@
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.1"
+    "@babel/cli": "^7.12.7",
+    "@babel/core": "^7.12.7",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/register": "^7.12.1",
+    "@babel/runtime": "^7.12.5",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.8",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0"
   }
 }
